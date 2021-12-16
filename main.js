@@ -1,36 +1,15 @@
-
-
-
-$(document).ready(function() {
-
-
-
-});
-
-/*function analyse() { alert("hello")
-
-//text = $('p').text();
-
-//alert(text);
-
-lelien=$("#lapage").val();
-alert(lelien);
-
-};*/
-
-
 const analyse = function () {
     let url = $("#lapage").val();
     let iframe = $("#lapagecontent").attr('src', url);
-    $("#lapagecontent").on('load', function() {
-    	var frameContent = $("#lapagecontent").contents().get();
+
+	$("#lapagecontent").on('load', function() {
+    	let frameContent = $("#lapagecontent").contents().get();
     	console.log('frame', frameContent);
     	const nodes = frameContent[0].all;
     	console.log('nodes', nodes);
 
  		const filtered = Array.from(nodes).filter(function(node) {
          	//console.log('noeud', node);
-
          	if(node.firstElementChild!=null) {
          		console.log('node ', node);
          		console.log('firstElementChild.nodeType', node.firstElementChild.nodeType);
@@ -38,17 +17,26 @@ const analyse = function () {
          	}
          	
          	return node.firstChild && node.firstChild.nodeType === 3 && node.firstElementChild === null ;
-         //	return node.firstChild && node.firstChild.nodeType === 3;
          });
- 		
+ 		filtered.map(element => {
+			let color = $(element).css( "color" );
+
+			let bgColor = $(element).css( "background-color" );
+			console.log("bgColor", bgColor);
+
+			const a = bgColor.split(',')
+			let alpha = parseFloat(a[3]);
+			if (isNaN(alpha)) {
+				alpha = 1
+			}
+			console.log("alpha", alpha);
+
+
+		});
  		console.log(filtered);
+});
 
-
-
-
-    });
-    
-
+	const
 
 /*    $.ajax(url, {
         success: function (response) {
