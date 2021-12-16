@@ -18,6 +18,7 @@ const analyse = function () {
          	
          	return node.firstChild && node.firstChild.nodeType === 3 && node.firstElementChild === null ;
          });
+
  		filtered.map(element => {
 			let color = $(element).css( "color" );
 
@@ -35,8 +36,6 @@ const analyse = function () {
 		});
  		console.log(filtered);
 });
-
-	const
 
 /*    $.ajax(url, {
         success: function (response) {
