@@ -1,0 +1,23 @@
+body {
+	background-color: #CCCCEE;
+	text-align: center;
+    font-family: 'Arial';
+}
+
+.container {
+  width: 50%;
+  background-color: #fff;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  visibility: hidden;
+}
+
+.score {
+  text-align: right;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: black;
+}
+
+.bar {width: 100%; background-color: #04AA6D;}
