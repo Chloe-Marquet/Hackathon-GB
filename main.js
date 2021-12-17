@@ -33,7 +33,15 @@ const analyse = function () {
 			let contraste = colorContrast(colorRgb, bgColorRgb);
 			console.log("*********************", contraste);
 
-			let affichage = "<p style=\'color:red\'>"+contraste+"</p>";
+			let pourcentage = contraste*100/21;
+			pourcentage = Math.floor(pourcentage);
+
+			let affichage = "";
+
+			if(pourcentage<34) affichage = "<p style=\'color:red; font-weight:bolder; font-size:20px; \'>"+pourcentage+"%</p>";
+			else if(pourcentage>=34 && pourcentage<60) affichage = "<p style=\'color:orange; font-weight:bolder; font-size:20px\'>"+pourcentage+"%</p>";
+			else if(pourcentage>60) affichage = "<p style=\'color:green; font-weight:bolder; font-size:20px\'>"+pourcentage+"%</p>";
+
 
 			$( element ).append(affichage);
 		});
