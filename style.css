@@ -1,7 +1,9 @@
-body {
-	background-color: #CCCCEE;
+.thisbody {
 	text-align: center;
     font-family: 'Arial';
+    background: linear-gradient(
+45deg, #7c3581 5%, #e26047 50%, #e99343 90%);
+    height: 180vh;
 }
 
 .container {
@@ -20,4 +22,52 @@ body {
   color: black;
 }
 
-.bar {width: 100%; background-color: #04AA6D;}
+.bar {width: 100%; 
+  margin-bottom: 5% !important;
+   margin-top: 5% !important;
+    width: 60%;
+    margin: 10%;
+    padding: 13px 26px 11px;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.bouton {
+  width: 20%;
+  padding: 13px 26px 11px;
+    letter-spacing: 1px;
+    background-color: #009ed9;
+    color: white;
+    border-radius: 30px;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition-duration: 0.2s;
+    margin-bottom: 10%;
+}
+
+.bouton:hover {
+    background-color: #006288;
+    color: white;
+    outline: none;
+    text-decoration: none;
+}
+
+.titre {
+  color:white;
+  text-transform: uppercase;
+  margin-top: 10%;
+}
+
+#lapagecontent {
+  width:80%;
+  margin-bottom: 10%;
+  background-color: white;
+  border-radius: 5px;
+  display: none;
+      height: 400px;
+}

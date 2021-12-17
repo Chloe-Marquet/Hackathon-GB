@@ -1,8 +1,14 @@
 const analyse = function () {
-    let url = $("#lapage").val();
-    let iframe = $("#lapagecontent").attr('src', url);
+   
+	try {
 
-	$("#lapagecontent").on('load', function() {
+		 let url = $("#lapage").val();
+    	let iframe = $("#lapagecontent").attr('src', url);
+
+    	$("#lapagecontent").css("display", "inline");
+
+		$("#lapagecontent").on('load', function() {
+
     	let frameContent = $("#lapagecontent").contents().get();
     	console.log('frame', frameContent);
     	const nodes = frameContent[0].all;
@@ -24,12 +30,17 @@ const analyse = function () {
 			let color = $(element).css( "color" );
 			let colorRgb = splitRgb(color);
 			let bgColorRgb = climbTrees(element);
-			colorContrast(colorRgb, bgColorRgb);
+			let contraste = colorContrast(colorRgb, bgColorRgb);
+			console.log("*********************", contraste);
+
+			let affichage = "<p style=\'color:red\'>"+contraste+"</p>";
+
+			$( element ).append(affichage);
 		});
  		console.log(filtered);
 });
 
-	const climbTrees = (node) => {
+		const climbTrees = (node) => {
 		let bgColor = $(node).css( "background-color" );
 		let bgColorRgb = splitRgb(bgColor);
 
@@ -41,7 +52,8 @@ const analyse = function () {
 	const splitRgb = (color) => {
 		let regexRgb = /\((.+)\)/;
 		let colorRgb = regexRgb.exec(color);
-		let colorSplit = colorRgb[1].split(',');
+		let colorSplit = " ";
+		if(colorRgb!=null) colorSplit=colorRgb[1].split(',');
 
 		let alpha = parseFloat(colorSplit[3]);
 		if (isNaN(alpha)) {
@@ -72,6 +84,14 @@ const analyse = function () {
 		let colorContrast = ((Math.max(luminance1, luminance2) + 0.05) / (Math.min(luminance1, luminance2) + 0.05)).toFixed(2);
 		console.log("colorContrast", colorContrast);
 		console.log("bgColorRgb", bgColorRgb);
+		return colorContrast;
 	};
+
+
+  
+	} catch (error) {
+  		console.error(error);
+	}
+
 };
 
